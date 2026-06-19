@@ -38,7 +38,7 @@ jobs:
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> simple_live_app/android/key.properties
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> simple_live_app/android/key.properties
       - name: Skip Android signing setup
-        if: ${{ !env.KEYSTORE_BASE64 }}
+        if: ${{ env.KEYSTORE_BASE64 == '' }}
         run: echo "KEYSTORE_BASE64 is empty, skipping Android APK build in this run."
 
       # 设置JAVA环境
